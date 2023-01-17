@@ -21,7 +21,6 @@ namespace EnemyState
 
         private void TargetReached()
         {
-            Debug.Log(enemy);
             Change(new AttackState(player, enemy));
         }
 

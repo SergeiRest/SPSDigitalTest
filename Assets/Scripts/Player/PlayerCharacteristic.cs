@@ -14,7 +14,6 @@ public class PlayerCharacteristic : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _health -= damage;
-        Debug.Log(_health);
         OnDamageTaken?.Invoke(damage);
         OnHealthLeft?.Invoke(_maxHealth, _health);
     }

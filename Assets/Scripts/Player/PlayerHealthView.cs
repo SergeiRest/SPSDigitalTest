@@ -2,7 +2,7 @@ using System;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class PlayerView : MonoBehaviour
+public class PlayerHealthView : MonoBehaviour
 {
     [SerializeField] private Image _healthBar;
 

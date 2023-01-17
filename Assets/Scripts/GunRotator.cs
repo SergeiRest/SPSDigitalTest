@@ -5,10 +5,10 @@ using UnityEngine;
 public class GunRotator : MonoBehaviour
 {
     [SerializeField] private GameObject _enemy;
-    [SerializeField] private GameObject _player;
+    [SerializeField] private float _damping;
 
     void Update()
     {
-        transform.localEulerAngles = _player.transform.position - _enemy.transform.position;
+        transform.LookAt(_enemy.transform);
     }
 }
