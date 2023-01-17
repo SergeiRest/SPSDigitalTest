@@ -8,7 +8,7 @@ public class PlayerView : MonoBehaviour
 
     public void SetHealthValue(int maxHealth, int currentHealth)
     {
-        float value = Convert.ToSingle(maxHealth / currentHealth);
-        Debug.Log(value);
+        float value = (float)currentHealth / (float)maxHealth;
+        _healthBar.fillAmount = value;
     }
 }

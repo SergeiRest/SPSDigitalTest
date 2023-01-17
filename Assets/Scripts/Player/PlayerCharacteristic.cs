@@ -8,12 +8,13 @@ public class PlayerCharacteristic : MonoBehaviour
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _health;
 
-    public Action<int> OnDamageTaken;
-    public Action<int, int> OnHealthLeft;
+    public event Action<int> OnDamageTaken;
+    public event Action<int, int> OnHealthLeft;
 
     public void TakeDamage(int damage)
     {
         _health -= damage;
+        Debug.Log(_health);
         OnDamageTaken?.Invoke(damage);
         OnHealthLeft?.Invoke(_maxHealth, _health);
     }

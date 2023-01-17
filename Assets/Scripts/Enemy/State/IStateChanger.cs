@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IStateChanger
+namespace EnemyState
 {
-    void Change();
+    public interface IStateChanger
+    {
+        void Change(State state);
+    }
 }

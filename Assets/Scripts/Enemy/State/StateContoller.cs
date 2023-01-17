@@ -8,9 +8,9 @@ namespace EnemyState
     {
         private State _currentState;
 
-        public void Init(Player player, Transform transform)
+        public void Init(Player player, Enemy enemy)
         {
-            _currentState = new MovementState(player, transform);
+            _currentState = new MovementState(player, enemy);
             _currentState.Enter();
             _currentState.StateChanged += ChangeState;
         }
@@ -18,8 +18,10 @@ namespace EnemyState
         public void ChangeState(State newState)
         {
             _currentState.Exit();
+            _currentState.StateChanged = null;
             _currentState = newState;
             _currentState.Enter();
+            _currentState.StateChanged += ChangeState;
         }
     }
 }

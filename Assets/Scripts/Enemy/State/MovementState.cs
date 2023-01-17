@@ -7,12 +7,10 @@ namespace EnemyState
     public class MovementState : State
     {
         private EnemyMovement _enemyMovement;
-        private Player _player;
-        
-        public MovementState(Player player, Transform transform) : base(player)
+
+        public MovementState(Player player, Enemy enemy) : base(player, enemy)
         {
-            _enemyMovement = new EnemyMovement(player, transform);
-            _player = player;
+            _enemyMovement = new EnemyMovement(player, enemy.transform);
         }
 
         public override void Enter()
@@ -23,7 +21,8 @@ namespace EnemyState
 
         private void TargetReached()
         {
-            StateChanged?.Invoke(new AttackState(_player));
+            Debug.Log(enemy);
+            Change(new AttackState(player, enemy));
         }
 
         public override void Exit()

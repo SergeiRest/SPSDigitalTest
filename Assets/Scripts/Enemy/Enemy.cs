@@ -5,11 +5,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Player _player; // Удалить потом
+    [SerializeField] private EnemyFight _fight;
+    
     private StateContoller _stateContoller = new StateContoller();
 
-    public StateContoller StateContoller => _stateContoller;
-    
-    
+    public EnemyFight Fight => _fight;
+
     private void Start()
     {
         StartCoroutine(StartMovement());
@@ -18,6 +19,6 @@ public class Enemy : MonoBehaviour
     private IEnumerator StartMovement()
     {
         yield return new WaitForSecondsRealtime(2f);
-        _stateContoller.Init(_player, transform);
+        _stateContoller.Init(_player, this);
     }
 }
