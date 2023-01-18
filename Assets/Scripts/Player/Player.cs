@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PlayerStates;
 using UniRx;
 using UnityEngine;
 
@@ -10,16 +11,15 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerCharacteristic _character;
     [SerializeField] private Gun _gun;
 
+    private PlayerStateMachine _stateMachine;
+
     public PlayerCharacteristic Character => _character;
+    public Gun Gun => _gun;
 
     public Transform AttackZone => attackZone;
 
-    private void Start()
+    public void Init()
     {
-        TimeSpan interval = new TimeSpan(0, 0, 1);
-        Observable.Interval(interval).TakeUntilDisable(gameObject).Subscribe(_ =>
-        {
-            _gun.Shoot();
-        });
+        _stateMachine = new PlayerStateMachine(this);
     }
 }
