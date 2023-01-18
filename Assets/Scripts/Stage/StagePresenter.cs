@@ -10,6 +10,8 @@ public class StagePresenter : MonoBehaviour
     public void Init()
     {
         _stageModel.OnStageInited += _stageView.Init;
+        _stageModel.OnStageComplete += _stageView.EnableStageButton;
+        _stageView.OnProgressFilled += _stageModel.CheckStage;
         _stageModel.Init();
     }
 }

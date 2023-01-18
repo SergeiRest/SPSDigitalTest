@@ -11,6 +11,8 @@ public class StageView : MonoBehaviour
     [SerializeField] private float _step; 
     private float _duration;
 
+    public Action OnProgressFilled;
+
     
     public void Init(float duration)
     {
@@ -21,8 +23,16 @@ public class StageView : MonoBehaviour
 
     private void FillProgress()
     {
+        if(_start.gameObject.activeSelf)
+            _start.gameObject.SetActive(false);
+        
         float value = _progress.fillAmount + _step;
 
-        _progress.DOFillAmount(value, _duration);
+        _progress.DOFillAmount(value, _duration).OnComplete(() => OnProgressFilled?.Invoke());
+    }
+
+    public void EnableStageButton()
+    {
+        _start.gameObject.SetActive(true);
     }
 }

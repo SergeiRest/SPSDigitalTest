@@ -6,7 +6,7 @@ public class EnemyMovement
 {
     private Player _target;
     private Transform _transform;
-    private float _movementDuration = 3f;
+    private float _movementDuration = 10f;
 
     private Tweener _tweener;
     

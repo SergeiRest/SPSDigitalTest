@@ -152,9 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af06cc2211c4462489151fab0c1803e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 3
   _stageView: {fileID: 395441821}
   _player: {fileID: 1696002608}
+  _enemyFactory: {fileID: 922768103}
 --- !u!4 &149046342
 Transform:
   m_ObjectHideFlags: 0
@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 3
+  _maxSteps: 3
 --- !u!114 &395441821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,34 +674,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5187150031094041032, guid: 50b21b41005cfd4408394edb1824061c, type: 3}
   m_PrefabInstance: {fileID: 5187150030538246227}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &786940320
+--- !u!114 &922768103 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 922768103, guid: 1b88054c43271544ea49ea7222070894, type: 3}
+  m_PrefabInstance: {fileID: 2888486732365098401}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786940315}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89d71506c39cebc4f8378618f3f54b3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 1696002608}
-  _fight: {fileID: 786940321}
---- !u!114 &786940321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786940315}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53969400dc7f4448a032149279ed211, type: 3}
+  m_Script: {fileID: 11500000, guid: 96c64602c5fa4f64bb7da93e2b82de0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackCooldown: 1
-  damage: 10
 --- !u!1 &1087092110
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,14 +847,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 922768103, guid: 1b88054c43271544ea49ea7222070894, type: 3}
+      propertyPath: _maxEnemyOnStage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 922768103, guid: 1b88054c43271544ea49ea7222070894, type: 3}
+      propertyPath: _minEnemyOnStage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1864209566, guid: 1b88054c43271544ea49ea7222070894, type: 3}
       propertyPath: _enemy
       value: 
       objectReference: {fileID: 786940315}
-    - target: {fileID: 1864209568, guid: 1b88054c43271544ea49ea7222070894, type: 3}
-      propertyPath: _target
-      value: 
-      objectReference: {fileID: 786940320}
     - target: {fileID: 2888486733892689804, guid: 1b88054c43271544ea49ea7222070894, type: 3}
       propertyPath: m_Name
       value: Player
@@ -928,6 +916,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 786940320, guid: 50b21b41005cfd4408394edb1824061c, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1696002608}
     - target: {fileID: 5187150031094041032, guid: 50b21b41005cfd4408394edb1824061c, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -942,11 +934,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5187150031094041036, guid: 50b21b41005cfd4408394edb1824061c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16
+      value: 20.25
       objectReference: {fileID: 0}
     - target: {fileID: 5187150031094041036, guid: 50b21b41005cfd4408394edb1824061c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5187150031094041036, guid: 50b21b41005cfd4408394edb1824061c, type: 3}
       propertyPath: m_LocalPosition.z

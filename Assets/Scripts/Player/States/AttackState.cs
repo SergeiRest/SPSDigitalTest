@@ -13,10 +13,12 @@ namespace PlayerStates
         public override void Enter()
         {
             Debug.Log("EnterAttackStage");
+            Player.Gun.StartShooting();
         }
 
         public override void Exit()
         {
+            Player.Gun.StopShooting();
             Debug.Log("ExitAttack");
         }
     }

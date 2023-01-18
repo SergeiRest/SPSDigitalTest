@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class GameBootsrapper : MonoBehaviour
 {
-    [SerializeField] private float _duration;
     [SerializeField] private StagePresenter _stageView;
     [SerializeField] private Player _player;
+    [SerializeField] private EnemyFactory _enemyFactory;
+    
+    private EnemiesContainer _enemiesContainer;
 
     private void Start()
     {
-        _player.Init();
+        _enemiesContainer = new EnemiesContainer();
+        _player.Init(_enemiesContainer);
         _stageView.Init();
+        _enemyFactory.Init(_enemiesContainer, _player);
     }
 }

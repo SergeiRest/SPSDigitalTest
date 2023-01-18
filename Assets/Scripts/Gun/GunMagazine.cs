@@ -25,6 +25,9 @@ public class GunMagazine : MonoBehaviour
 
     public void TurnBack(Bullet bullet)
     {
+        if(_bullets.Contains(bullet))
+            return;
+        
         _bullets.Enqueue(bullet);
     }
 }

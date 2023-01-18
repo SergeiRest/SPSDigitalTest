@@ -10,12 +10,12 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed;
     private int _damage;
-    private Transform _target;
+    private Enemy _target;
     private IDisposable _disposable;
     
     public Action<Bullet> OnTargetReached;
 
-    public void Init(int damage, Transform target)
+    public void Init(int damage, Enemy target)
     {
         _damage = damage;
         _target = target;
@@ -26,13 +26,26 @@ public class Bullet : MonoBehaviour
     {
         _disposable = Observable.EveryUpdate().TakeUntilDisable(gameObject).Subscribe(_ =>
         {
-            transform.position = Vector3.Lerp(transform.position, _target.position, _speed * Time.deltaTime);
-            if ((transform.position - _target.position).sqrMagnitude < 0.1f)
+            if (_target == null)
             {
-                gameObject.SetActive(false);
-                _disposable?.Dispose();
-                OnTargetReached?.Invoke(this);
+                Clear();
+                return;
+            }
+            
+            transform.position = Vector3.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime);
+            
+            if ((transform.position - _target.transform.position).sqrMagnitude < 0.1f)
+            {
+                _target.Characteristic.TakeDamage(_damage);
+                Clear();
             }
         });
+    }
+
+    private void Clear()
+    {
+        gameObject.SetActive(false);
+        _disposable?.Dispose();
+        OnTargetReached?.Invoke(this);
     }
 }

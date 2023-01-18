@@ -18,8 +18,9 @@ public class Player : MonoBehaviour
 
     public Transform AttackZone => attackZone;
 
-    public void Init()
+    public void Init(EnemiesContainer enemiesContainer)
     {
+        _gun.Init(enemiesContainer);
         _stateMachine = new PlayerStateMachine(this);
     }
 }
